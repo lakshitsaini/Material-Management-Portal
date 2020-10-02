@@ -118,7 +118,12 @@ def student_login(request):
 			if user.is_active:
 				login(request,user)
 				#return HttpResponseRedirect(reverse('index'))
-				return render(request,'mmp_app/student_profile.html')
+				student = Student.objects.filter(user = user)[0]
+				context = { 'name' : student.student_name,
+						'branch':student.student_branch,
+						'courses':student.courses.all(),
+				}
+				return render(request,'mmp_app/student_profile.html',context)
 			else:
 				return HttpResponse("Account not active")
 		else:
