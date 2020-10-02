@@ -120,4 +120,5 @@ def upload_file(request):
                 file_instance.save()
     else:
         form = FileUploadForm()
- 	return render(request, 'mmp_app/upload_pdf.html', {'form': form})
+        return render(request, 'mmp_app/upload_file.html',
+                      {'form': form})

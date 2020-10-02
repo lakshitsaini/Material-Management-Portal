@@ -8,4 +8,5 @@ urlpatterns=[
     path('student_login',views.student_login,name='student_login'),
     path('faculty_register',views.faculty_register,name='faculty_register'),
     path('student_register',views.student_register,name='student_register'),
+    path('upload_file',views.upload_file,name='upload_file'),
 ]
