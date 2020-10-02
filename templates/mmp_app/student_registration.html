@@ -3,7 +3,7 @@
 {%block body_block%}
 
 {% if user.is_authenticated %}
-       <h2> <a href="{% url 'logout'%}">Student Logout</a> </h2>
+       <h2> <a href="{% url 'mmp_app:student_logout'%}">Student Logout</a> </h2>
       {% else %}
        <h2> <a href="{% url 'mmp_app:student_login'%}">Student Login Here!</a> </h2>
           {% endif %}

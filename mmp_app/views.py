@@ -12,7 +12,12 @@ def index(request):
 
 
 @login_required
-def logout(request):
+def faculty_logout(request):
+	logout(request)
+	return HttpResponseRedirect(reverse('index'))
+
+@login_required
+def student_logout(request):
 	logout(request)
 	return HttpResponseRedirect(reverse('index'))
 
