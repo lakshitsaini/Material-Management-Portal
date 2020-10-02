@@ -21,6 +21,18 @@ def student_logout(request):
 	logout(request)
 	return HttpResponseRedirect(reverse('index'))
 
+@login_required
+def student_detail(request, Student_id):
+
+	detail=get_object_or_404(Student,pk=Student_id)
+	return render(request,'mmp_app/student_profile.html',{'Student':detail})
+
+@login_required
+def faculty_detail(request, Faculty_id):
+
+	detail=get_object_or_404(Faculty,pk=Faculty_id)
+	return render(request,'mmp_app/faculty_profile.html',{'Faculty':detail})
+
 def faculty_register(request):
 	registered=False
 
@@ -124,14 +136,3 @@ def upload_file(request):
                       {'form': form})
 
 
-@login_required
-def student_detail(request, Student_id):
-
-	detail=get_object_or_404(Student,pk=Student_id)
-	return render(request,'mmp_app/student_profile.html',{'Student':detail})
-
-@login_required
-def faculty_detail(request, Faculty_id):
-
-	detail=get_object_or_404(Faculty,pk=Faculty_id)
-	return render(request,'mmp_app/faculty_profile.html',{'Faculty':detail})
