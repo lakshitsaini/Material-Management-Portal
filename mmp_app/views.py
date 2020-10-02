@@ -142,6 +142,9 @@ def upload_file(request):
             for f in files:
                 file_instance = Course(files=f)
                 file_instance.save()
+            return HttpResponseRedirect(reverse('index'))
+        else:
+        	return HttpResponse("invalid form")
     else:
         form = FileUploadForm()
         return render(request, 'mmp_app/upload_file.html',
