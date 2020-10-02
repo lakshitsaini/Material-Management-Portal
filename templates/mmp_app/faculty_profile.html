@@ -3,11 +3,17 @@
 <div class="container">
 	<div class="jumbotron">
        		<h1>Welcome to the Portal</h1>
+<<<<<<< HEAD
        		<a class="btn btn-primary" href="{% url 'mmp_app:faculty_logout'%}" role="button">Logout</a>
   </div>
   <h3>Faculty Name : {{ name }}</h3>
   <h3>Faculty Department : {{ dept }}</h3>
   <h3>Courses:</h3>
+=======
+  </div>
+  <h3>Faculty Name : {{ name }}</h3>
+  <h3>Faculty Department : {{ dept }}</h3>
+>>>>>>> 36620da9cd651237065ee6c2815c14ef901a7ecb
   {% for course in courses %}
     <h3>{{ course }}</h3>
   {% endfor %}
