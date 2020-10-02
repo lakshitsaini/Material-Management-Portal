@@ -2,20 +2,18 @@
 
 {%block body_block%}
 
-<div class="container">
+<div class="jumbotron">
+	{% if registered %}
+		<h1>You are succefully registered! Please Login.</h1>
+		<div class="container">
 	{% if user.is_authenticated %}
-       <h2> <a  href="{% url 'student_logout'%}">Student Logout</a> </h2>
+       <h2> <a  href="{% url 'student_logout'%}">Logout</a> </h2>
       {% else %}
        <h2> <a  href="{% url 'mmp_app:student_login'%}">Student Login Here!</a> </h2>
           {% endif %}
 </div>
-
-<div class="jumbotron">
-	{% if registered %}
-		<h1>Thank you for registering</h1>
 	{%else%}
 		<h1>Register here!</h1>
-		<h3>Fill out the form:</h3>
 		<form enctype="multipart/form-data" method="post">
 			{% csrf_token %}
 			{{ user_form.as_p }}
