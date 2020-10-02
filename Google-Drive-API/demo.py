@@ -1,5 +1,7 @@
 from pydrive.drive import GoogleDrive
 from pydrive.auth import GoogleAuth
+import re
+import time
 
 gauth = GoogleAuth()
 gauth.LocalWebserverAuth()
@@ -22,3 +24,8 @@ def getfile(id):
 def delete(id):
     file = getfile(id)
     file.Delete()
+
+def list(id):
+    file = getfile(id)
+    print('title: %s\n',(file['title']))
+
