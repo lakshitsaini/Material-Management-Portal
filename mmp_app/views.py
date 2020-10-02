@@ -1,23 +1,18 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from mmp_app.forms import UserForm,StudentProfileInfoForm,FacultyProfileInfoForm,FileUploadForm
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect,HttpResponse
 from django.contrib.auth import authenticate,login,logout
-from mmp_app.models import Course
+from mmp_app.models import Course,Faculty,Student
 # Create your views here.
 
 def index(request):
 	return render(request,'mmp_app/index.html')
 
-@login_required
-def faculty_logout(request):
-	logout(request)
-	return HttpResponseRedirect(reverse('index'))
-
 
 @login_required
-def student_logout(request):
+def logout(request):
 	logout(request)
 	return HttpResponseRedirect(reverse('index'))
 
@@ -122,3 +117,16 @@ def upload_file(request):
         form = FileUploadForm()
         return render(request, 'mmp_app/upload_file.html',
                       {'form': form})
+
+
+@login_required
+def student_detail(request, Student_id):
+
+	detail=get_object_or_404(Student,pk=Student_id)
+	return render(request,'mmp_app/student_profile.html',{'Student':detail})
+
+@login_required
+def faculty_detail(request, Faculty_id):
+
+	detail=get_object_or_404(Faculty,pk=Faculty_id)
+	return render(request,'mmp_app/faculty_profile.html',{'Faculty':detail})

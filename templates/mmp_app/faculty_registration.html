@@ -7,7 +7,7 @@
 		<h1>You are succefully registered! Please Login.</h1>
 		<div class="container">
 	{% if user.is_authenticated %}
-       <h2> <a href="{% url 'faculty_logout'%}">Faculty Logout</a> </h2>
+       <h2> <a href="{% url 'logout'%}">Faculty Logout</a> </h2>
       {% else %}
        <h2> <a href="{% url 'mmp_app:faculty_login'%}">Faculty Login Here!</a> </h2>
           {% endif %}

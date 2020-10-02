@@ -9,4 +9,6 @@ urlpatterns=[
     path('faculty_register',views.faculty_register,name='faculty_register'),
     path('student_register',views.student_register,name='student_register'),
     path('upload_file',views.upload_file,name='upload_file'),
+    path('<int:Student_id>/',views.student_detail,name='student_detail'),
+    path('<int:Faculty_id>/',views.faculty_detail,name='faculty_detail'),
 ]
