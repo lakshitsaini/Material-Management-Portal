@@ -67,7 +67,8 @@ def faculty_login(request):
 		if user:
 			if user.is_active:
 				login(request,user)
-				return HttpResponseRedirect(reverse('index'))
+				#return HttpResponseRedirect(reverse('index'))
+				return render(request,'mmp_app/faculty_profile.html')
 			else:
 				return HttpResponse("Account not active")
 		else:
@@ -111,7 +112,8 @@ def student_login(request):
 		if user:
 			if user.is_active:
 				login(request,user)
-				return HttpResponseRedirect(reverse('index'))
+				#return HttpResponseRedirect(reverse('index'))
+				return render(request,'mmp_app/student_profile.html')
 			else:
 				return HttpResponse("Account not active")
 		else:

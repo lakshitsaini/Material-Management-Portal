@@ -4,7 +4,7 @@
 <div class="container">
 	<div class="jumbotron">
 		{% if user.is_authenticated %}
-       		<h1>Welcome to Material Management Protal !</h1>
+       		<h1>Welcome to Material Management Portal Homepage!</h1>
        		<a class="btn btn-primary" href="{% url 'mmp_app:student_logout'%}" role="button">Logout</a>
       {% else %}
       	<h1>Please Select Your Category :</h1>
