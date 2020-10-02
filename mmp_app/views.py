@@ -68,7 +68,12 @@ def faculty_login(request):
 			if user.is_active:
 				login(request,user)
 				#return HttpResponseRedirect(reverse('index'))
-				return render(request,'mmp_app/faculty_profile.html')
+				faculty = Faculty.objects.filter(user = user)[0]
+				context = { 'name' : faculty.faculty_name,
+						'dept':faculty.faculty_dept,
+						'courses':faculty.courses.all()
+				}
+				return render(request,'mmp_app/faculty_profile.html',context)
 			else:
 				return HttpResponse("Account not active")
 		else:
