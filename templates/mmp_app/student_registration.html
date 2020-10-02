@@ -2,17 +2,15 @@
 
 {%block body_block%}
 
+{% if user.is_authenticated %}
+       <h2> <a href="{% url 'logout'%}">Student Logout</a> </h2>
+      {% else %}
+       <h2> <a href="{% url 'mmp_app:student_login'%}">Student Login Here!</a> </h2>
+          {% endif %}
+
 <div class="jumbotron">
 	{% if registered %}
 		<h1>You are succefully registered! Please Login.</h1>
-		<h2> <a  href="{% url 'mmp_app:student_login'%}">Student Login Here!</a> </h2>
-		<div class="container">
-	{% if user.is_authenticated %}
-       <h2> <a href="{% url 'logout'%}">Faculty Logout</a> </h2>
-      {% else %}
-       <h2> <a href="{% url 'mmp_app:faculty_login'%}">Faculty Login Here!</a> </h2>
-          {% endif %}
-</div>
 	{%else%}
 		<h1>Student Register here!</h1>
 		<form enctype="multipart/form-data" method="post">
