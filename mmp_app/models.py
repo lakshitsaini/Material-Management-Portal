@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 class Course(models.Model):
 	course_name=models.CharField(max_length=256)
-	file_id = models.CharField(max_lenght=256)
+	file_id = models.CharField(max_length=256)
 	files = models.FileField(upload_to='Files/', blank=True, null=True)
 	def __str__(self):
 		return self.course_name
