@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from mmp_app.models import Faculty,Student,UploadFile
+from mmp_app.models import Faculty,Student,Course
 from django.forms import ClearableFileInput
 
 class UserForm(forms.ModelForm):
@@ -28,7 +28,7 @@ class FacultyProfileInfoForm(forms.ModelForm):
 class FileUploadForm(forms.ModelForm):
 
     class Meta():
-        model = UploadFile
+        model = Course
         fields = ['files']
         widgets = {
             'files': ClearableFileInput(attrs={'multiple': True}),

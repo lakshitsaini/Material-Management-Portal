@@ -5,13 +5,14 @@ from django.contrib.auth.models import User
 
 class Course(models.Model):
 	course_name=models.CharField(max_length=256)
+	files = models.FileField(upload_to='Files/', blank=True, null=True)
 	def __str__(self):
 		return self.course_name
 
 
-class UploadFile(models.Model):
-    files = models.FileField(upload_to='Files/', blank=True, null=True)
-    courses = models.ManyToManyField(Course)
+#class UploadFile(models.Model):
+    
+ #   courses = models.ManyToManyField(Course)
 
 
 class Student(models.Model):

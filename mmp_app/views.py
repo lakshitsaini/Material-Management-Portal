@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect,HttpResponse
 from django.contrib.auth import authenticate,login,logout
-from mmp_app.models import UploadFile
+from mmp_app.models import Course
 # Create your views here.
 
 def index(request):
@@ -116,7 +116,7 @@ def upload_file(request):
         files = request.FILES.getlist('files')
         if form.is_valid():
             for f in files:
-                file_instance = UploadFile(files=f)
+                file_instance = Course(files=f)
                 file_instance.save()
     else:
         form = FileUploadForm()
