@@ -1,15 +1,16 @@
 from pydrive.drive import GoogleDrive
 from pydrive.auth import GoogleAuth
+import config
 
 gauth = GoogleAuth()
 gauth.LocalWebserverAuth()
 drive = GoogleDrive(gauth)
 
 fileId = ''
-def upload(filename):
+def upload(filename, filepath):
 
-    file1 = drive.CreateFile({'title' : filename,"parents": [{"kind": "drive#fileLink", "id": "1d7SPfSL1bQRicIpZWRc5EY_WaotFBF8r"}]})
-    file1.SetContentFile('File/'+filename)
+    file1 = drive.CreateFile({'title' : filename,"parents": [{"kind": "drive#fileLink", "id": config.root_id}]})
+    file1.SetContentFile(filepath)
     # print('Uploaded!')
     file1.Upload()
     global fileId
