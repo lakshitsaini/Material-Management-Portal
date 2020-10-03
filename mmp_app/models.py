@@ -5,14 +5,14 @@ from django.contrib.auth.models import User
 
 class Course(models.Model):
 	course_name=models.CharField(max_length=256)
-	#file_id = models.CharField(max_length=256)
+	file_id = models.CharField(max_length=256, default="empty")
 	files = models.FileField(upload_to='Files/', blank=True, null=True)
 	def __str__(self):
 		return self.course_name
 
 
 #class UploadFile(models.Model):
-    
+
  #   courses = models.ManyToManyField(Course)
 
 

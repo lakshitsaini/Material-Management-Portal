@@ -5,6 +5,8 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect,HttpResponse
 from django.contrib.auth import authenticate,login,logout
 from mmp_app.models import Course,Faculty,Student
+from demo import upload
+import tempfile, os
 # Create your views here.
 
 def index(request):
@@ -46,7 +48,7 @@ def faculty_register(request):
 			user.save()
 
 			profile=profile_form.save(commit=False)
-			profile.user=user 
+			profile.user=user
 			profile.save()
 			registered=True
 		else:
@@ -96,7 +98,7 @@ def student_register(request):
 			user.save()
 
 			profile=profile_form.save(commit=False)
-			profile.user=user 
+			profile.user=user
 			profile.save()
 			registered=True
 		else:
@@ -140,7 +142,16 @@ def upload_file(request):
         files = request.FILES.getlist('files')
         if form.is_valid():
             for f in files:
-                file_instance = Course(files=f)
+                try:
+                    file_instance = Course(files=f,file_id=upload(f.name, f.file.name))
+                except AttributeError:
+                    filepath = None
+                    with tempfile.NamedTemporaryFile("wb", delete=False) as fl:
+                        filepath = fl.name
+                        for chunk in f.chunks():
+                            fl.write(chunk)
+                    file_instance = Course(files=f,file_id=upload(f.name, filepath))
+                    os.unlink(filepath)
                 file_instance.save()
             return HttpResponseRedirect(reverse('index'))
         else:
@@ -149,5 +160,3 @@ def upload_file(request):
         form = FileUploadForm()
         return render(request, 'mmp_app/upload_file.html',
                       {'form': form})
-
-
