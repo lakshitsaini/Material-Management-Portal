@@ -1,4 +1,4 @@
-# MMS
+# MMP
 
 # Using:
 1. Copy paste your settings.yaml, client_secrets.json, and credentials.json
